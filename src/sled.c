@@ -1,3 +1,4 @@
+#include "input.h"
 #include <stdio.h>
 
 int main(int argc, char *argv[])
@@ -19,9 +20,26 @@ int main(int argc, char *argv[])
         return 74;
     }
 
-    while ((input = getinput(inputBuffer)) != INPUT_EXIT)
+    while ((input = getInput()) != INPUT_EXIT)
     {
+        switch (input)
+        {
+        case INPUT_CAT:
+            break;
+        case INPUT_ADD_LINE:
+            break;
+        case INPUT_DELETE_LINE:
+            break;
+        case INPUT_EDIT_LINE:
+            break;
+        case INPUT_EXIT: // Unreachable
+            break;
+        default: // Unreachable
+            goto outofloop;
+        }
     }
+
+outofloop:
 
     return 0;
 }

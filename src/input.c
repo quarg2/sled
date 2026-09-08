@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "input.h"
 #include <stdio.h>
 
@@ -23,3 +24,6 @@ Input getInput(void) {
             goto getInput;
     }
 }
+=======
+#include "input.h"
+>>>>>>> 2119a6b (input handling)

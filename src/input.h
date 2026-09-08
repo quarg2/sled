@@ -3,11 +3,13 @@
 
 typedef enum
 {
-    INPUT_CAT,
-    INPUT_ADD_LINE,
-    INPUT_DELETE_LINE,
-    INPUT_EDIT_LINE,
-    INPUT_EXIT,
+    INPUT_CAT,         // c
+    INPUT_ADD_LINE,    // a
+    INPUT_DELETE_LINE, // d
+    INPUT_EDIT_LINE,   // e
+    INPUT_EXIT,        // q
 } Input;
+
+Input getInput(void);
 
 #endif
