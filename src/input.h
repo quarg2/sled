@@ -4,6 +4,7 @@
 typedef enum
 {
     INPUT_CAT,         // c
+    INPUT_PRINT,       // p
     INPUT_ADD_LINE,    // a
     INPUT_DELETE_LINE, // d
     INPUT_EDIT_LINE,   // e

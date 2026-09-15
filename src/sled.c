@@ -1,8 +1,18 @@
+#include "sled.h"
+
 #include "input.h"
+#include "lineBuffer.h"
+
 #include <stdio.h>
+
+static int readFile(FILE *fp, LineBuffer *buffer);
 
 int main(int argc, char *argv[])
 {
+    Input input;
+    FILE *fp;
+    LineBuffer buffer;
+
     if (argc == 1)
     {
         fprintf(stderr, "Supply file name.\n"
@@ -11,14 +21,14 @@ int main(int argc, char *argv[])
         return 64;
     }
 
-    char inputBuffer[128];
-    Input input;
-
-    FILE *fp = fopen(argv[1], "r+");
+    fp = fopen(argv[1], "r+");
     if (!fp)
     {
+        fprintf(stderr, "Error with opening file.");
         return 74;
     }
+
+    readFile(fp, &buffer);
 
     while ((input = getInput()) != INPUT_EXIT)
     {
@@ -33,7 +43,7 @@ int main(int argc, char *argv[])
         case INPUT_EDIT_LINE:
             break;
         case INPUT_EXIT: // Unreachable
-            break;
+            goto outofloop;
         default: // Unreachable
             goto outofloop;
         }
@@ -42,4 +52,15 @@ int main(int argc, char *argv[])
 outofloop:
 
     return 0;
+}
+
+static int readFile(FILE *fp, LineBuffer *buffer)
+{
+    char line[LINE_BUFFER_SIZE];
+
+    while (fgets(line, LINE_BUFFER_SIZE, fp))
+    {
+        appendLineToBuffer(buffer, line);
+    }
+    fseek(fp, 0, SEEK_SET);
 }

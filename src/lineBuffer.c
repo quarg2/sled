@@ -17,11 +17,11 @@ LineBuffer initLineBuffer(void)
  * Resize buffer if needed
  *
  * Args:
- * * LineBuffer \*buffer: buffer to be modified
+ * - LineBuffer \*buffer: buffer to be modified
  * Returns:
  * Returns int signifying success
- * * 0: Success
- * * -1: Call to `realloc()` failied. The buffer is not useable and accessing
+ * - 0: Success
+ * - -1: Call to `realloc()` failied. The buffer is not useable and accessing
  * `lines` is undefined
  */
 static int resize(LineBuffer *buffer)
@@ -64,8 +64,8 @@ int appendLineToBuffer(LineBuffer *buffer, char *str)
  * Adds line at the start of the buffer
 
  * Args:
- * * LineBuffer \*buffer: line buffer to be modified
- * * char \*str: String whose contents are copied to the destination
+ * - LineBuffer *buffer: line buffer to be modified
+ * - char *str: String whose contents are copied to the destination
 */
 int insertLineToBuffer(LineBuffer *buffer, char *str)
 {

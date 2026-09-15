@@ -12,6 +12,8 @@ Input getInput(void)
         {
         case 'c':
             return INPUT_CAT;
+        case 'p':
+            return INPUT_PRINT;
         case 'a':
             return INPUT_ADD_LINE;
         case 'd':
