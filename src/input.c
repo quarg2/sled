@@ -1,17 +1,18 @@
-<<<<<<< HEAD
 #include "input.h"
+#include <stdbool.h>
 #include <stdio.h>
 
-Input getInput(void) {
+Input getInput(void)
+{
     int c;
 
-    getInput:
-    c = getchar();
-
-    switch (c) {
+    while (true)
+    {
+        switch (c = getchar())
+        {
         case 'c':
             return INPUT_CAT;
-            case 'a':
+        case 'a':
             return INPUT_ADD_LINE;
         case 'd':
             return INPUT_DELETE_LINE;
@@ -21,9 +22,7 @@ Input getInput(void) {
             return INPUT_EXIT;
         default:
             fprintf(stderr, "Invalid input: %c\n", c);
-            goto getInput;
+            break;
+        }
     }
 }
-=======
-#include "input.h"
->>>>>>> 2119a6b (input handling)

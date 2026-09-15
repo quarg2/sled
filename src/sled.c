@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Supply file name.\n"
                         "Usage\n"
                         "sled FILE");
-        return 0;
+        return 64;
     }
 
     char inputBuffer[128];
