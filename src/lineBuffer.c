@@ -125,7 +125,7 @@ int insertLineToBufferAt(LineBuffer *buffer, char *str, size_t at)
 
     if (!temp)
     {
-        return STR_ALLOC_ERR;
+        return ALLOC_ERR;
     }
 
     // Shift elements that are after `at`
@@ -137,6 +137,28 @@ int insertLineToBufferAt(LineBuffer *buffer, char *str, size_t at)
     memcpy((void *)(buffer->lines + at + 1), (void *)temp, sizeof(char *) * (buffer->count - at));
 
     buffer->count++;
+    free(temp);
+
+    return NO_ERR;
+}
+
+int removeLineFromBuffer(LineBuffer *buffer, size_t at)
+{
+    char **temp;
+
+    if (at > buffer->count)
+    {
+        return BAD_INDEX;
+    }
+    free(buffer->lines[at]);
+    buffer->lines[at] = NULL;
+    buffer->count--;
+
+    temp = ALLOCATE(char *, buffer->count - at);
+
+    memcpy((void *)temp, (void *)(buffer->lines + at), sizeof(char *) * (buffer->count - at));
+    memcpy((void *)(buffer->lines + at - 1), (void *)temp, sizeof(char *) * (buffer->count - at - 1));
+
     free(temp);
 
     return NO_ERR;
